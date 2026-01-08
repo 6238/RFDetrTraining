@@ -45,7 +45,6 @@ my_custom_job = aiplatform.CustomJob(
 
 parameter_spec = {
     "learning_rate": hpt.DoubleParameterSpec(min=1e-5, max=1e-3, scale="log"),
-    "batch_size": hpt.DiscreteParameterSpec(values=[8, 16, 32], scale=None),
 }
 
 metric_spec = {"mean_average_precision": "maximize"}

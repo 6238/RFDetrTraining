@@ -14,7 +14,6 @@ def train_rfdetr():
     parser = argparse.ArgumentParser()
     # Parameters to tune
     parser.add_argument('--learning_rate', type=float, default=1e-4)
-    parser.add_argument('--batch_size', type=int, default=16)
     parser.add_argument('--dataset_uri', type=str)
     args = parser.parse_args()
 
@@ -31,8 +30,9 @@ def train_rfdetr():
     history = model.train(
         dataset_dir="/job/data",
         lr=args.learning_rate,
-        batch_size=args.batch_size,
-        epochs=8,
+        batch_size=8,    
+        grad_accum_steps=2,
+        epochs=10,
     )
 
     # Report final validation mAP to Vertex AI
