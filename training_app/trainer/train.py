@@ -31,7 +31,8 @@ def train_rfdetr():
     history = model.train(
         dataset_dir="/job/data",
         lr=args.learning_rate,
-        batch_size=args.batch_size
+        batch_size=args.batch_size,
+        epochs=8,
     )
 
     # Report final validation mAP to Vertex AI
