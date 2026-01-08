@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 REQUIRED_PACKAGES = [
     "rfdetr",
-    "hypertune",
+    "cloudml-hypertune",
 ]
 
 setup(
