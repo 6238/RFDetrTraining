@@ -1,0 +1,7 @@
+credentials.json
+
+training_app/dist/
+training_app/__pycache__/
+training_app/trainer.egg-info/
+
+datasets/
