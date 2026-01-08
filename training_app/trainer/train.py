@@ -1,8 +1,14 @@
 import argparse
 import hypertune # Required for reporting metrics
-from rfdetr import RFDETRNano
 import os 
 import subprocess
+
+os.environ.setdefault("LOCAL_RANK", "0")
+os.environ.setdefault("RANK", "0")
+os.environ.setdefault("WORLD_SIZE", "1")
+
+from rfdetr import RFDETRNano
+
 
 def train_rfdetr():
     parser = argparse.ArgumentParser()
