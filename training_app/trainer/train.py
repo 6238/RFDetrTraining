@@ -3,9 +3,11 @@ import hypertune # Required for reporting metrics
 import os 
 import subprocess
 
+for k in ("RANK", "WORLD_SIZE", "MASTER_ADDR", "MASTER_PORT"):
+    os.environ.pop(k, None)
+
+# Still provide LOCAL_RANK for any code path that expects it
 os.environ.setdefault("LOCAL_RANK", "0")
-os.environ.setdefault("RANK", "0")
-os.environ.setdefault("WORLD_SIZE", "1")
 
 from rfdetr import RFDETRNano
 
@@ -29,10 +31,12 @@ def train_rfdetr():
     model = RFDETRNano()
     history = model.train(
         dataset_dir="/job/data",
+        output_dir="/job/output",
         lr=args.learning_rate,
         batch_size=8,    
         grad_accum_steps=2,
         epochs=10,
+        num_workers=1,
     )
 
     # Report final validation mAP to Vertex AI

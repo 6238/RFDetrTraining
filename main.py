@@ -54,7 +54,7 @@ tuning_job = aiplatform.HyperparameterTuningJob(
     custom_job=my_custom_job,
     metric_spec=metric_spec,
     parameter_spec=parameter_spec,
-    max_trial_count=10,
+    max_trial_count=6,
     parallel_trial_count=4,
 )
 
